@@ -1,8 +1,15 @@
-function [value] = LSUE( tr_cell,tr_TF, O, Group_Index, Lamda, te_Cell, te_TF )
+function [value] = LSUE( tr_Cell,tr_TF, O, Group_Index, Lamda, te_Cell, te_TF )
 
-% 
+% Input format: O is n_o*n_p signal matrix with each of its rows corresponding to a chip-seq
+% dataset. tr_Cell and tr_TF are two n_p*1 cell arrays of strings, which records the name of TF and Cell for the
+% corresponding row of O. Group_Index is a n_g*1 cell array, with its
+% i-th element recording the index of genomic pisitions arranged into the
+% i-th group. te_Cell and te_TF are two strings which records the name of
+% TF and Cell for which we need to impute the corresponding profile.
+%Output format: value is a 1*n_p matrix, which returns the predicted
+%profile of te_TF in te_Cell
 
-[Cell,~,C_ID] = unique(tr_cell);
+[Cell,~,C_ID] = unique(tr_Cell);
 clear cell
 [TF,~,T_ID] = unique(tr_TF);
 clear TF
@@ -121,7 +128,7 @@ Omega = zeros(nm,nc);
 
 for i = 1:size(A,1)
     Omega(T_ID(i),C_ID(i)) = 1;
-    OB(T_ID(i),C_ID(i))) = Oe(i);
+    OB(T_ID(i),C_ID(i)) = Oe(i);
 end
 
 for i = 1:iter
