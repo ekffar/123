@@ -1,5 +1,5 @@
 # LSUE
-Collaborative Completion of Sparsely Observed ChIP-seq Datasets via Local Sensitive Unified Embedding
+Collaborative Completion of Transcription Factor Binding Profiles via Local Sensitive Unified Embedding
 
 # License
 Copyright 2016 Lin Zhu
